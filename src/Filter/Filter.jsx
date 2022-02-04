@@ -4,7 +4,7 @@ import style from "./Filter.module.css";
 const Filter = ({ value, changeFilter }) => {
   return (
     <>
-      <h2>Find contacts by name</h2>
+      <h2 className={style.Title}>Find contacts by name</h2>
       <input
         type="text"
         // name="filter"

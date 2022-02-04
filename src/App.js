@@ -6,6 +6,7 @@ import "./App.css";
 import Filter from "./Filter/Filter.jsx";
 import ContactForm from "./contactForm/ContactForm.jsx";
 import ContactList from "./ContactList/ContactList";
+import style from "./App.css";
 
 class App extends Component {
   state = {
@@ -29,6 +30,7 @@ class App extends Component {
       id: nanoid(),
     };
     const nameLowerCase = name.toLowerCase();
+    // чи потрібно так присвоювати в змінну? запитати ментора
     this.state.contacts.some(
       (contact) => nameLowerCase === contact.name.toLowerCase()
     )
