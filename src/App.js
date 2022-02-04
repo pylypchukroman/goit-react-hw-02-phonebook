@@ -1,12 +1,9 @@
-// Не забути про проп тайпи!!!
-
 import React, { Component } from "react";
 import { nanoid } from "nanoid";
 import "./App.css";
 import Filter from "./Filter/Filter.jsx";
 import ContactForm from "./contactForm/ContactForm.jsx";
 import ContactList from "./ContactList/ContactList";
-import style from "./App.css";
 import { Notify } from "notiflix/build/notiflix-notify-aio";
 
 class App extends Component {
@@ -30,11 +27,10 @@ class App extends Component {
       number,
       id: nanoid(),
     };
-    const nameLowerCase = name.toLowerCase();
-    // чи потрібно так присвоювати в змінну? запитати ментора
-    this.state.contacts.some(
-      (contact) => nameLowerCase === contact.name.toLowerCase()
-    )
+    const checkedName = this.state.contacts.some(
+      (contact) => name.toLowerCase() === contact.name.toLowerCase()
+    );
+    checkedName
       ? Notify.failure(`${name} is already in contacts.`)
       : this.setState((prevState) => ({
           contacts: [contact, ...prevState.contacts],
@@ -44,9 +40,10 @@ class App extends Component {
   getCurrentContacts = () => {
     const { filter, contacts } = this.state;
     const noRegisterRequest = filter.toLowerCase();
-    return contacts.filter((contact) =>
+    const filteredContacts = contacts.filter((contact) =>
       contact.name.toLowerCase().includes(noRegisterRequest)
     );
+    return filteredContacts;
   };
 
   changeFilter = (e) => {
