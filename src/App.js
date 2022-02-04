@@ -29,16 +29,17 @@ class App extends Component {
     console.log(this.state.contacts);
   };
 
-  deleteItem = (id) =>
-    this.setState((prev) => ({
-      contacts: prev.contacts.filter((el) => el.id !== id),
-    }));
+
 
   changeFilter = (e) => {
    console.log(e.currentTarget.value);
     this.setState({ filter: e.currentTarget.value });
  };
 
+    deleteItem = (id) =>
+    this.setState((prev) => ({
+      contacts: prev.contacts.filter((el) => el.id !== id),
+    }));
 
   render() {
     const { filter } = this.state;
