@@ -7,6 +7,7 @@ import Filter from "./Filter/Filter.jsx";
 import ContactForm from "./contactForm/ContactForm.jsx";
 import ContactList from "./ContactList/ContactList";
 import style from "./App.css";
+import { Notify } from "notiflix/build/notiflix-notify-aio";
 
 class App extends Component {
   state = {
@@ -34,7 +35,7 @@ class App extends Component {
     this.state.contacts.some(
       (contact) => nameLowerCase === contact.name.toLowerCase()
     )
-      ? alert(`${name} is already in contacts.`)
+      ? Notify.failure(`${name} is already in contacts.`)
       : this.setState((prevState) => ({
           contacts: [contact, ...prevState.contacts],
         }));
